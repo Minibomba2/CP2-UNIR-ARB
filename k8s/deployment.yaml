@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-web
+  namespace: cp2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-web
+  template:
+    metadata:
+      labels:
+        app: aks-web
+    spec:
+      imagePullSecrets:
+        - name: acr-secret
+      initContainers:
+        - name: init-content
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              echo '<!doctype html><html lang="es"><head><meta charset="utf-8"><title>CP2 AKS Web Persistente</title></head><body><h1>Aplicación AKS con almacenamiento persistente</h1><p>UNIR - Caso Práctico 2</p></body></html>' > /data/index.html
+          volumeMounts:
+            - name: web-data
+              mountPath: /data
+      containers:
+        - name: aks-web
+          image: acrcp2arb2691.azurecr.io/aks-web:casopractico2
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: web-data
+              mountPath: /usr/local/apache2/htdocs
+      volumes:
+        - name: web-data
+          persistentVolumeClaim:
+            claimName: aks-web-pvc

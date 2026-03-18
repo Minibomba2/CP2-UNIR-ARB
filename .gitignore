@@ -1,0 +1,6 @@
+ansible/vars.yml
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+*.log
