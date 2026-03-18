@@ -99,6 +99,10 @@ Este paso realiza:
 * Despliegue del contenedor en la VM
 * Creación de recursos en Kubernetes
 
+Para la autenticación con el ACR:
+cp vars.example.yml vars.yml
+# editar vars.yml con la password real del ACR
+./deploy.sh
 ---
 
 ## 🌐 Acceso a las aplicaciones
