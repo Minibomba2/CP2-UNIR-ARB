@@ -4,22 +4,22 @@ variable "location" {
 }
 
 variable "resource_group_name" {
-  description = "Resource group for case study"
+  description = "Nombre del rg"
   default     = "rg-cp2"
 }
 
 variable "vm_name" {
-  description = "VM name"
+  description = "Nombre de la VM"
   default     = "vm-cp2"
 }
 
 variable "vm_admin_username" {
-  description = "VM admin username"
+  description = "admin user VM"
   default     = "cp2-user"
 }
 
 variable "vm_size" {
-  description = "VM size"
+  description = "Tamaño en la VM"
   default     = "Standard_B2s_v2"
 }
 
@@ -29,17 +29,17 @@ variable "public_key_path" {
 }
 
 variable "aks_name" {
-  description = "AKS cluster name"
+  description = "Nombre del cluster AKS"
   default     = "aks-cp2"
 }
 
 variable "aks_dns_prefix" {
-  description = "AKS DNS prefix"
+  description = "Prefijo AKS DNS"
   default     = "aks-cp2-arb"
 }
 
 variable "aks_node_count" {
-  description = "Number of AKS nodes"
+  description = "Cantidad de nodos AKS"
   default     = 1
 }
 
